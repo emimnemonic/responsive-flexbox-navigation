@@ -1,0 +1,214 @@
+// Variables
+// Colors
+$life: #3B9AB2;
+$aquatic: #78B7C5;
+$zissou: #EBCC2A;
+$steve: #fff;
+// Fonts
+$main: 300 20px/28px 'Raleway',
+sans-serif;
+$huge: 700 28px/40px 'Raleway',
+sans-serif;
+// Mixins
+// Breakpoints
+@mixin breakpoint($point) {
+    @if $point==large {
+        @media only screen and (max-width: 1280px) {
+            @content;
+        }
+    }
+    @else if $point==medium {
+        @media only screen and (max-width: 980px) {
+            @content;
+        }
+    }
+    @else if $point==small {
+        @media only screen and (max-width: 767px) {
+            @content;
+        }
+    }
+    @else if $point==xsmall {
+        @media only screen and (max-width: 480px) and (orientation: portrait) {
+            @content;
+        }
+    }
+    @else if point==xlarge {
+        @media (min-width: 1281px) {
+            @content;
+        }
+    }
+}
+
+// Flexbox
+@mixin flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex($values) {
+    @include flexbox;
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    -ms-flex: $values;
+    -webkit-flex: $values;
+    flex: $values;
+}
+
+@mixin flex-direction($dir) {
+    @if $dir==column {
+        -webkit-flex-direction: vertical;
+        -moz-flex-direction: vertical;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    @else {
+        -webkit-flex-direction: horizontal;
+        -moz-flex-direction: horizontal;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+    }
+}
+
+@mixin flex-space($justify) {
+    -webkit-justify-content: $justify;
+    justify-content: $justify;
+}
+
+@mixin flex-align($align) {
+    -webkit-align-items: $align;
+    align-items: $align;
+}
+
+// Box and Borders
+@mixin box-sizing($type) {
+    -webkit-box-sizing: $type;
+    -moz-box-sizing: $type;
+    box-sizing: $type;
+}
+
+@mixin border-radius($radius...) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin auto-center {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin antialias {
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin transition($transition...) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    filter: alpha(opacity=($opacity * 100));
+}
+
+// Base
+html {
+    @include box-sizing(border-box);
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    @include box-sizing(inherit);
+}
+
+body {
+    @include antialias;
+    font: $main;
+    background-color: $life;
+}
+
+a {
+    color: $steve;
+    text-decoration: none;
+}
+
+// top nav
+nav#top-nav {
+    text-transform: uppercase;
+    @include flexbox;
+    @include flex-space(flex-end);
+    width: 100%;
+    .top-nav {
+        max-width: 50%;
+        @include flex(1 0);
+        @include flex-direction(row);
+        @include flex-space(flex-end);
+        @include flex-align(center);
+    }
+    a {
+        @include flex(1 1 0);
+        @include flex-space(space-around);
+        @include flex-align(center);
+        list-style: none;
+        padding: 1em;
+    }
+    a:last-of-type {
+        margin-right: 2em;
+    }
+}
+
+// Nav icons
+.menu-icon {
+    margin: 1em;
+    width: 30px;
+}
+
+.menu-icon:before,
+.menu-icon:after {
+    background-color: $steve;
+    @include pseudo;
+    position: relative;
+    @include border-radius(3px);
+    height: 1px;
+    margin: 8px 0;
+    @include transition(all .2s ease-in-out);
+}
+
+.menu-icon:before {
+    box-shadow: 0 8px 0 #fff;
+    margin-bottom: 16px;
+}
+
+.close {
+    display: hidden;
+}
+
+.close:before {
+    box-shadow: 0 0 0 #fff;
+    transform: translateY(9px) rotate(45deg);
+}
+
+.close:after {
+    transform: translateY(-9px) rotate(-45deg);
+}

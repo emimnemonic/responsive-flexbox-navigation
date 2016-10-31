@@ -1,0 +1,113 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+body {
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font: 300 20px/28px "Raleway", sans-serif;
+  background-color: #3B9AB2; }
+
+a {
+  color: #fff;
+  text-decoration: none; }
+
+nav#top-nav {
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  width: 100%; }
+  nav#top-nav .top-nav {
+    max-width: 50%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 1 0;
+    -moz-box-flex: 1 0;
+    -ms-flex: 1 0;
+    -webkit-flex: 1 0;
+    flex: 1 0;
+    -webkit-flex-direction: horizontal;
+    -moz-flex-direction: horizontal;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-align-items: center;
+    align-items: center; }
+  nav#top-nav a {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 1 1 0;
+    -moz-box-flex: 1 1 0;
+    -ms-flex: 1 1 0;
+    -webkit-flex: 1 1 0;
+    flex: 1 1 0;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    -webkit-align-items: center;
+    align-items: center;
+    list-style: none;
+    padding: 1em; }
+  nav#top-nav a:last-of-type {
+    margin-right: 2em; }
+
+.menu-icon {
+  margin: 1em;
+  width: 30px; }
+
+.menu-icon:before,
+.menu-icon:after {
+  background-color: #fff;
+  content: "";
+  display: block;
+  position: absolute;
+  position: relative;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  height: 1px;
+  margin: 8px 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; }
+
+.menu-icon:before {
+  box-shadow: 0 8px 0 #fff;
+  margin-bottom: 16px; }
+
+.close {
+  display: hidden; }
+
+.close:before {
+  box-shadow: 0 0 0 #fff;
+  transform: translateY(9px) rotate(45deg); }
+
+.close:after {
+  transform: translateY(-9px) rotate(-45deg); }
+
+/*# sourceMappingURL=style.css.map */
