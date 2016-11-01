@@ -123,7 +123,12 @@ nav#top-nav {
       -webkit-flex-direction: column;
       flex-direction: column;
       -webkit-align-items: center;
-      align-items: center; }
+      align-items: center;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
       nav#top-nav .top-nav li:not(.menu-icon):hover {
         background-color: #EBCC2A; }
         nav#top-nav .top-nav li:not(.menu-icon):hover a {
@@ -131,22 +136,28 @@ nav#top-nav {
       nav#top-nav .top-nav li:not(.menu-icon) a {
         padding: 1em; }
       nav#top-nav .top-nav li:not(.menu-icon) ul.dropdown-content {
-        display: none;
         position: absolute;
+        z-index: -1;
         background-color: #EBCC2A;
         width: 300px;
         margin-left: calc(-300px + (50% / 8));
         padding: 0;
-        z-index: 1;
-        -webkit-transition: all 0.2s ease-in-out;
-        -moz-transition: all 0.2s ease-in-out;
-        -ms-transition: all 0.2s ease-in-out;
-        -o-transition: all 0.2s ease-in-out;
-        transition: all 0.2s ease-in-out; }
+        opacity: 0;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out; }
         nav#top-nav .top-nav li:not(.menu-icon) ul.dropdown-content li {
           padding: 1em 2em; }
           nav#top-nav .top-nav li:not(.menu-icon) ul.dropdown-content li a {
+            height: 0;
             color: #fff; }
+        nav#top-nav .top-nav li:not(.menu-icon) ul.dropdown-content li:last-of-type {
+          padding-bottom: 3em; }
+      nav#top-nav .top-nav li:not(.menu-icon):hover ul.dropdown-content {
+        z-index: 1;
+        opacity: 1; }
       @media only screen and (max-width: 767px) {
         nav#top-nav .top-nav li:not(.menu-icon) {
           display: none;
@@ -170,15 +181,14 @@ nav#top-nav {
   transition: opacity 0.4s ease-in-out; }
   .main .contrast {
     color: #fff; }
+  .hover-fade {
+    opacity: 0.5;
+    filter: alpha(opacity=50); }
   @media only screen and (max-width: 767px) {
     .main {
       max-width: 100%;
       padding: 2em 1em;
       font-size: 48px;
       line-height: 60px; } }
-
-.hover-fade {
-  opacity: 0.5;
-  filter: alpha(opacity=50); }
 
 /*# sourceMappingURL=style.css.map */

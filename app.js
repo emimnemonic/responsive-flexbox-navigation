@@ -8,7 +8,6 @@ $(document).ready(function ()  {
     });
 
     $('li.dropdown').hover(function () {
-        $('.dropdown-content').toggle();
         $('.main').toggleClass('hover-fade');
     });
 });
