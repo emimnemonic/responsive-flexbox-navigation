@@ -9,6 +9,8 @@ $main: 300 20px/28px 'Raleway',
 sans-serif;
 $huge: 700 28px/40px 'Raleway',
 sans-serif;
+$super: 700 72px/108px 'Raleway',
+sans-serif;
 // Mixins
 // Breakpoints
 @mixin breakpoint($point) {
@@ -116,6 +118,12 @@ sans-serif;
     -moz-osx-font-smoothing: grayscale;
 }
 
+@mixin transform($transform...) {
+    -webkit-transform: $transform;
+    -moz-transform: $transform;
+    transform: $transform;
+}
+
 @mixin transition($transition...) {
     -webkit-transition: $transition;
     -moz-transition: $transition;
@@ -146,10 +154,12 @@ body {
     @include antialias;
     font: $main;
     background-color: $life;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-    color: $steve;
+    color: $zissou;
     text-decoration: none;
 }
 
@@ -159,56 +169,124 @@ nav#top-nav {
     @include flexbox;
     @include flex-space(flex-end);
     width: 100%;
+    // UL wrapper
     .top-nav {
         max-width: 50%;
-        @include flex(1 0);
-        @include flex-direction(row);
-        @include flex-space(flex-end);
-        @include flex-align(center);
-    }
-    a {
-        @include flex(1 1 0);
-        @include flex-space(space-around);
-        @include flex-align(center);
         list-style: none;
-        padding: 1em;
+        @include flex(1 0 auto);
+        @include flex-direction(row);
+        @include flex-space(flex-start);
+        @include flex-align(center);
+        padding: 1em 0;
+        // Adjust nav bar for mobile
+        @include breakpoint(small) {
+            max-width: 100%;
+            display: block;
+            text-align: center;
+        }
+        // Hide Menu icon and show on small screens
+        li.menu-icon {
+            display: none;
+            @include breakpoint(small) {
+                display: inline-block;
+                float: right;
+                margin-right: 20px;
+            }
+            // Nav icons
+            .icon {
+                padding: 0;
+                margin: 1em;
+                width: 28px;
+                &:before, &:after {
+                    background-color: $zissou;
+                    @include pseudo;
+                    position: relative;
+                    @include border-radius(3px);
+                    height: 1px;
+                    margin: 8px 0;
+                    @include transition(all .2s ease-in-out);
+                }
+                &:before {
+                    box-shadow: 0 8px 0 $zissou;
+                    margin-bottom: 16px;
+                }
+            }
+            .close:before {
+                box-shadow: 0 0 0 #fff;
+                @include transform(translateY(9px) rotate(45deg));
+                background-color: $steve;
+            }
+            .close:after {
+                @include transform(translateY(-9px) rotate(-45deg));
+                background-color: $steve;
+            }
+        }
+        // Rest of nav items
+        li:not(.menu-icon) {
+            @include flex(1 0 0);
+            @include flex-space(flex-start);
+            @include flex-direction(column);
+            @include flex-align(center);
+            &:hover {
+                background-color: $zissou;
+                a {
+                    color: $steve;
+                }
+            }
+            // Padding for item text except icon
+            a {
+                padding: 1em;
+            }
+            // Dropdown menu
+            ul.dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: $zissou;
+                width: 300px;
+                margin-left: calc(-300px + (50% / 8));
+                padding: 0;
+                z-index: 1;
+                @include transition(all 0.2s ease-in-out);
+                li {
+                    padding: 1em 2em;
+                    a {
+                        color: $steve;
+                    }
+                }
+            }
+            // Mobile hide nav items except icon
+            @include breakpoint(small) {
+                display: none;
+                padding: 0.5em 0;
+                a {
+                    font: $huge;
+                    color: $steve;
+                }
+                &.active {
+                    display: block;
+                }
+            }
+        }
     }
-    a:last-of-type {
-        margin-right: 2em;
+}
+// Main Content
+.main {
+    height: 100%;
+    max-width: 70%;
+    padding: 1em 0 1em 1em;
+    font: $super;
+    color: $zissou;
+    @include transition(opacity .4s ease-in-out);
+    .contrast {
+        color: $steve;
+    }
+    @include breakpoint(small) {
+        max-width: 100%;
+        padding: 2em 1em;
+        font-size: 48px;
+        line-height: 60px;
     }
 }
-
-// Nav icons
-.menu-icon {
-    margin: 1em;
-    width: 30px;
-}
-
-.menu-icon:before,
-.menu-icon:after {
-    background-color: $steve;
-    @include pseudo;
-    position: relative;
-    @include border-radius(3px);
-    height: 1px;
-    margin: 8px 0;
-    @include transition(all .2s ease-in-out);
-}
-
-.menu-icon:before {
-    box-shadow: 0 8px 0 #fff;
-    margin-bottom: 16px;
-}
-
-.close {
-    display: hidden;
-}
-
-.close:before {
-    box-shadow: 0 0 0 #fff;
-    transform: translateY(9px) rotate(45deg);
-}
-
-.close:after {
-    transform: translateY(-9px) rotate(-45deg);
+.hover-fade {
+    @include opacity(0.5);
 }

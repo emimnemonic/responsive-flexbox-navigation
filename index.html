@@ -19,29 +19,37 @@
 <header>
     <nav id="top-nav">
         <ul class="top-nav">
-            <a href="">
-                <li>Life</li>
-            </a>
-            <a href="#">
-                <li>Aquatic</li>
-            </a>
-            <a href="#">
-                <li>Steve</li>
-            </a>
-            <a href="#">
-                <li>Zissou</li>
-            </a>
-            <a href="#" id="open-menu">
-                <li id="icon" class="menu-icon"></li>
-            </a>
+            <li class="dropdown">
+                <a href="#">Life</a>
+                <div>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Ned Plimpton</a></li>
+                        <li><a href="#">Klaus Daimler</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">
+                Aquatic</a>
+            </li>
+            <li><a href="#">
+                Steve</a>
+            </li>
+            <li><a href="#">
+                Zissou</a>
+            </li>
+            <li class="menu-icon">
+                <a href="javascript:void(0)" id="open-menu" class="icon">
+                </a>
+            </li>
         </ul>
     </nav>
+    <div class="main">
+        The deeper you go,
+        the <span class="contrast">weirder</span> life gets.
+    </div>
 </header>
 
 <body>
-
-
-
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="app.js"></script>
