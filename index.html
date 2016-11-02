@@ -9,7 +9,6 @@
     <!-- Mobile Stuff -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="msapplication-tap-highlight" content="no">
 
     <title>Flexbox Nav Bar</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,700" rel="stylesheet">
@@ -44,8 +43,7 @@
         </ul>
     </nav>
     <div class="main">
-        The deeper you go,
-        the <span class="contrast">weirder</span> life gets.
+        The deeper you go, the <span class="contrast">weirder</span> life gets.
     </div>
 </header>
 
@@ -53,6 +51,21 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="app.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var items = $('ul.top-nav').children('li:not(.menu-icon)');
+
+            $('#open-menu').click(function () {
+                $(this).toggleClass('close');
+                items.toggleClass('active');
+            });
+
+            $('li.dropdown').hover(function () {
+                $('.main').toggleClass('hover-fade');
+            });
+        });
+    </script>
 </body>
 
 </html>
