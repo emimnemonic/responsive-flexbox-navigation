@@ -99,6 +99,7 @@ sans-serif;
     border-radius: $radius;
 }
 
+// Styles
 @mixin auto-center {
     margin: {
         left: auto;
@@ -184,20 +185,22 @@ nav#top-nav {
             display: block;
             text-align: center;
         }
-        // Hide Menu icon and show on small screens
+        // Hide navicon on desktop
         li.menu-icon {
             display: none;
+            // Show navicon on small screens
             @include breakpoint(small) {
                 display: inline-block;
                 float: right;
                 margin-right: 20px;
             }
-            // Nav icons
+            // Navicon CSS only
             .icon {
                 padding: 0;
                 margin: 1em;
                 width: 28px;
-                &:before, &:after {
+                &:before,
+                &:after {
                     background-color: $zissou;
                     @include pseudo;
                     position: relative;
@@ -211,6 +214,7 @@ nav#top-nav {
                     margin-bottom: 16px;
                 }
             }
+            // Close icon
             .close:before {
                 box-shadow: 0 0 0 #fff;
                 @include transform(translateY(9px) rotate(45deg));
@@ -259,6 +263,7 @@ nav#top-nav {
                     padding-bottom: 3em;
                 }
             }
+            // Reveal dropdown menu on hover
             &:hover ul.dropdown-content {
                 z-index: 1;
                 opacity: 1;
@@ -278,6 +283,7 @@ nav#top-nav {
         }
     }
 }
+
 // Main Content
 .main {
     height: 100%;
@@ -289,6 +295,7 @@ nav#top-nav {
     .contrast {
         color: $steve;
     }
+    // Apply fade out effect on reveal dropdown menu using jQuery
     @at-root {
         .hover-fade {
             @include opacity(0.5);
